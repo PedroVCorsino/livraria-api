@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { Produto } from "./produto.model";
 
 @Controller('produtos')
 export class ProdutosController {
@@ -8,7 +9,7 @@ export class ProdutosController {
       return 'Lista de produtos';
    }
 
-   @Get(':id')
+   @Get(':id') 
    obterUm(@Param() params) : string {
        return `Retorna os dados do produto ${params.id}`;
    }
