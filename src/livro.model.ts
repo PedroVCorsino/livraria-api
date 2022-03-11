@@ -1,4 +1,4 @@
-export class Produto {
+export class Livro {
     public id: number;
     constructor(
         public codigo: string,
