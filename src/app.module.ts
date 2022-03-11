@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
-// import { ConfigModule } from '@nestjs/config/dist/config.module';
+import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize/dist/sequelize.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Livro } from './livro.model';
 import { LivrosController } from './livros.controller';
 import { LivrosService } from './livros.service';
-// import { DatabaseModule } from './core/database/database.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     SequelizeModule.forRoot({
       dialect: 'postgres',
       host: 'localhost',
