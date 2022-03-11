@@ -1,15 +1,14 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
-import console from "console";
 import { Livro } from "./livro.model";
 
 @Injectable()
-export class LivroService {
+export class LivrosService {
     constructor(
-        @InjectModel(Livro) // Injeta o modelo de Livro
+        @InjectModel(Livro)
         private livroModel: typeof Livro
     ) {}
-        
+
     async obterTodos(): Promise<Livro[]> {
         return this.livroModel.findAll();
     }
@@ -19,24 +18,22 @@ export class LivroService {
     }
 
     async criar(livro: Livro) {
-        return this.livroModel.create(livro);
-        console.log(livro);
+        this.livroModel.create(livro);
     }
 
-    // alterar um livro
-    async alterar(livro: Livro) {
+    //update
+    async alterar(livro: Livro): Promise<[number, Livro[]]> {
         return this.livroModel.update(livro, {
             where: {
-              id: livro.id
-            }
+                id: livro.id
+            },
+            returning: true
         });
-        console.log(livro);
-    }     
+    }
+    
 
     async apagar(id: number) {
         const livro: Livro = await this.obterUm(id);
         livro.destroy();
-        console.log(livro);
     }
-
 }

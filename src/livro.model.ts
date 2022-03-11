@@ -1,14 +1,13 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Table, Model, Column, DataType } from "sequelize-typescript";
 
-@Table 
+@Table
 export class Livro extends Model<Livro> {
-
     @Column({
-        type: DataType.STRING(60), 
+        type: DataType.STRING(60),
         allowNull: false,
     })
     codigo: string;
-    
+
     @Column({
         type: DataType.STRING,
         allowNull: false,
@@ -16,9 +15,8 @@ export class Livro extends Model<Livro> {
     nome: string;
 
     @Column({
-        type: DataType.DECIMAL,
+        type: DataType.DECIMAL(10, 2),
         allowNull: false,
     })
     preco: number;
-
 }
