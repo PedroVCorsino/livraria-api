@@ -5,6 +5,9 @@
 ## Description: 
 CRUD com nestjs
 
+Projeto realizado durante o curso NestJS: criando uma API Rest com TypeScript da Alura.
+Usei PostgreSQL como base de dados, substituindo MySQL usado pelo prof do curso.
+
 ## Installation
 
 ```bash
